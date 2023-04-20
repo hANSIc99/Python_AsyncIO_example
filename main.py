@@ -36,8 +36,8 @@ async def main():
 
 
         start = time.time()
-        futures = [performGetRequest(session, url) for url in myFavorateWebsites]
-        status = await asyncio.gather(*futures)
+        coro = [performGetRequest(session, url) for url in myFavorateWebsites]
+        status = await asyncio.gather(*coro)
         
         print('\n'.join(status))
         end = time.time()

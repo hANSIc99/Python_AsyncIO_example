@@ -32,14 +32,13 @@ async def main():
             print(result)
         end = time.time()
         print('>>> Elapsed time on synchronous access: {}'.format(end - start))
-    
-
 
         start = time.time()
-        coro = [performGetRequest(session, url) for url in myFavorateWebsites]
-        status = await asyncio.gather(*coro)
+        tasks = [asyncio.create_task(performGetRequest(session, url)) for url in myFavorateWebsites]
+        await asyncio.gather(*tasks)
         
-        print('\n'.join(status))
+        results = [task.result() for task in tasks]
+        print('\n'.join(results))
         end = time.time()
         print('>>> Elapsed time on asynchronous access: {}'.format(end - start))
 

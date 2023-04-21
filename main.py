@@ -20,7 +20,7 @@ async def main():
         'https://opensource.com',
         'https://python.org',
         'https://github.com',
-        'https://en.cppreference.com'
+        'https://en.cppreference.com',
         'https://getfedora.org'
     ]
 

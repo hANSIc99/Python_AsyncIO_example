@@ -20,7 +20,7 @@ async def main():
         'https://opensource.com',
         'https://python.org',
         'https://github.com',
-        'https://en.cppreference.com'
+        'https://en.cppreference.com',
         'https://getfedora.org'
     ]
 
@@ -32,8 +32,6 @@ async def main():
             print(result)
         end = time.time()
         print('>>> Elapsed time on synchronous access: {}'.format(end - start))
-    
-
 
         start = time.time()
         coro = [performGetRequest(session, url) for url in myFavorateWebsites]

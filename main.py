@@ -3,8 +3,8 @@ import asyncio
 import aiohttp
 
 
-async def performGetRequest(session, url):
-    async with session.get('https://httpbin.org/get') as response:
+async def performGetRequest(session, ):
+    async with session.get(url) as response:
         html = await response.text()
         if response.status == 200:
             return 'Successfully loaded {}'.format(url)

@@ -24,7 +24,8 @@ async def main():
         'https://getfedora.org'
     ]
 
-    async with aiohttp.ClientSession() as session:
+    connector = aiohttp.TCPConnector(verify_ssl=False)
+    async with aiohttp.ClientSession(connector=connector) as session:
 
         start = time.time()
         for url in myFavorateWebsites:

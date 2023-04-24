@@ -5,6 +5,7 @@ import aiohttp
 
 async def performGetRequest(session, url):
     async with session.get(url) as response:
+
         html = await response.text()
         if response.status == 200:
             return 'Successfully loaded {}'.format(url)
@@ -24,7 +25,9 @@ async def main():
         'https://getfedora.org'
     ]
 
-    async with aiohttp.ClientSession() as session:
+    connector = aiohttp.TCPConnector(verify_ssl=False)
+
+    async with aiohttp.ClientSession(connector=connector) as session:
 
         start = time.time()
         for url in myFavorateWebsites:

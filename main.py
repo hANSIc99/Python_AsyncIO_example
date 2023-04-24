@@ -25,7 +25,7 @@ async def main():
         'https://getfedora.org'
     ]
 
-    connector = aiohttp.TCPConnector(verify_ssl=False)
+    connector = aiohttp.TCPConnector(ssl=False)
 
     async with aiohttp.ClientSession(connector=connector) as session:
 
